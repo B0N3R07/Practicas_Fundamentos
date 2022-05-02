@@ -4,61 +4,157 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora consola</title>
+    <title>Document</title>
 </head>
 <body>
+    <script>
+        //================================CODIGO DE CALCULADORA EDUARDO JOSÉ MARTINEZ RUIZ====================================//
 
-        <script>
-            let  option = 0;
-            let  option1 = 0;
-            let  option3 = 0;
-            let  option4 = 0;
+        let tipo_Op = 0;//tipo operacion
+        let  tomav = 0 ;//Si   |No
+        let  numerosa = [0,0,0];//0 = N1|1 = N2|2 = R|
 
-            
-            M_cosole();
-            function M_cosole()
+        Mostrar_Opciones();
+        function Mostrar_Opciones()
+        {
+
+            tipo_Op= prompt('¿Que tipo de operación realizarás?.\n1.Suma\n2.Resta\n3.Multiplicacion\n4.Division\n5.Potencia','');
+            numerosa[0] =prompt('¿Cual es el primer número? :','');
+            console.log(numerosa[0])
+            numerosa[1] =prompt('¿Cual es el segundo número?','');
+            console.log(numerosa[1])
+            Calcular();
+            tomav =prompt('Desea hacer otra operacion? S| N','');
+            Ver_Op(tomav);
+
+        }
+        function Realizar_Calculo(t,a,b)
+        {
+          
+           switch(t)
+           {
+                case 1: return numerosa[2] = a+b;
+                case 2: return  numerosa[2] = a-b;
+                case 3: return  numerosa[2] = a*b;
+                case 4: return  numerosa[2] = a/b;
+                case 5: return  numerosa[2] = Math.pow(a,b);
+           }
+        
+        }
+        function Calcular()
             {
-
-                option =prompt('Escribe el tipo de operacion.\n1.Suma\n2.Resta\n3.Multiplicacion\n4.Division\n5.Potencia','');
-                option1 =prompt('Escribe el numero 1 :','');
-                option2 =prompt('Escribe el numero 2 :','');
-                Calcular();
-                option4 =prompt('Desea hacer otra operacion? S| N','');
-                Obteneropc(option4);
-
-            }
-
-            function Calcular()
-            {
-                let b = parseInt(option1);
-                let c = parseInt(option2);
-                let topt = parseInt(option);
-                let m =  calculo(b,topt,c);
+                let c = parseInt(numerosa[0]);
+                let d = parseInt(numerosa[1]);
+                let e = parseInt(tipo_Op);
+                let m =  Realizar_Calculo(e,c,d);
                 return  alert("El resultado de la operacion: "+m);
             }
-            function Obteneropc(r)
+      
+        //
+        function Ver_Op(m)
+        {
+            switch(m)
             {
-                    switch(r)
-                    {
-                        case 'S':M_cosole();
-                        case 'N':document.write('Si quiere volver a usar recarge\nCalculadora Eduardo Jose MTZ R. ');
-                    }
-            }
-            function calculo(e1,tv,e2) 
-            {
-                let resil = 0;
-                switch(tv)
+                case 'S','Si','SI','si','s':
                 {
-                    case 1: return resil = e1+e2;
-                    case 2:return  resil = e1-e2;
-                    case 3:return  resil = e1*e2;
-                    case 4:return  resil = e1/e2;
-                    case 5:return  resil = Math.pow(e1, e2);
+                    Mostrar_Opciones();
+                    break;
+                }
+                case 'n','No','NO','no','N':
+                {
+                    document.write('Si quiere volver a usar recargue\nCalculadora Eduardo Jose MTZ R. ');
+                    break;
+                }
+                default:
+                {
+                    tomav = prompt('Sistema: Opcion inválida\n |SI|: Si quiere hacer otra operacion\n| NO| Si desea salir','');
+                    Ver_Op(tomav);
+                    break;
                 }
             }
+        }
 
+        //=======================================PROBLEMAS ACTIVIDAD  VIDEO 35====================================================================
+                
+  /*      
+    1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+    3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+    4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+    6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+    7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+    8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+    */
 
-        </script>
-    
+   
+    // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    function contar_texto(verb = "")
+    {
+        console.log(`La palabra  ${verb} posee ${verb.length} caracetéres`);
+    }
+    contar_texto("Hola mundo");
+    // 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+    function cotar_texto(palabra = "")
+    {
+        console.log(palabra.slice(0,4));
+    }
+    cotar_texto("Hola mundo");
+    // 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+    function separador(texto) 
+    {
+        console.log(texto.split(' '));
+    }
+    separador("hola que tal");
+    // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    function repertir_ciclo(info,veces)
+    {
+        console.log(info.repeat(veces));
+    }
+    repertir_ciclo("Hola mundo",3);
+    //5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+    function reverse(info)
+    {
+        return info.split("").reverse().join("");
+    }
+    console.log(reverse("Hola mundo"));
+    // 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+    function Buscar_Vtexto(info, info2) 
+    {
+            let ctext = info.split(" ");
+            let counter = 0;
+            for (let i = 0; i < ctext.length; i++) {
+                if (ctext[i] == info2) 
+                {
+                    counter++;
+                }
+            }
+            console.log(`Se encontro la palabra ${info2} ${counter} veces`);
+    }    
+    Buscar_Vtexto("hola mundo adios mundo", "mundo");   
+    //7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+    function verificarp(texto) 
+    {
+        const reservada = texto.split("").reverse().join("");
+        if( reservada === texto)console.log(`La palabra  ${texto} es palíndromo`);
+        else 
+        console.log(`La palabra  ${texto} no es palíndromo`);
+    }
+    verificarp("salas");
+    //8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+    function Convertir_Texto(convertir, dato) 
+    {
+        let apartar = convertir.split(",");
+        let resultb = "";
+        for (let i = 0; i < apartar.length; i++) 
+        {
+            resultb += apartar[i].replace(dato, "");
+        }
+        console.log(resultb);
+    }
+    Convertir_Texto("xyz1 , xyz2 , xyz3 , xyz4 ,y xyz5", "xyz");
+    </script>
 </body>
 </html>
